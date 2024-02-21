@@ -2093,7 +2093,7 @@ background: linear-gradient(to right, #FA6220 0%, #EF8B33 100%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent; */
 .content-modules{
-    margin-top: 10%;
+    margin-top: 20%;
 }
 .modal-title{
     font-family: Poppins-regular;
