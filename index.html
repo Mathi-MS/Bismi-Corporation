@@ -478,47 +478,38 @@
               data-aos-duration="1000">Need to get in touch with us? Either fill out the form with your inquiry or find the <a href="mailto:skillupsoftwaresolutions@gmail.com" title="mail">email</a>  you'd like to contact below.</p>
             </div>
             <div class="col-6 contact-right">
-              <form class="row g-3 needs-validation"data-aos="zoom-in" novalidate>
+              <div class="row g-3 needs-validation"data-aos="zoom-in" novalidate>
                 <div class="col-6">
                   <label for="validationCustom01" class="form-label">First name</label>
                   <input type="text" class="form-control" id="validationCustom01" placeholder="Adam" required>
-                  <div class="valid-feedback">
-                    Looks good!
-                  </div>
+                  <div class="firstnamewrong">
+                  
+                </div>
                 </div>
                 <div class="col-6">
                   <label for="validationCustom02" class="form-label">Last name</label>
                   <input type="text" class="form-control" id="validationCustom02" placeholder="Smith" required>
-                  <div class="valid-feedback">
-                    Looks good!
-                  </div>
+                  <div class="lastnamewrong">
+                  
+                </div>
                 </div>
                 <div class="col-12">
                   <label for="validationCustom03" class="form-label">Email</label>
                   <input type="email" class="form-control" id="validationCustom03" required>
-                  <div class="invalid-feedback">
-                    Please provide a valid Email.
-                  </div>
+                  <div class="emailwrong">
+                  
+                </div>
                 </div>
                 <div class="col-12">
                   <label for="validationCustom03" class="form-label">What can we help you with?</label>
                   <textarea name="text" id="validationCustom04" cols="10" rows="10"></textarea>
                   </div>
                 <div class="col-12">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                    <label class="form-check-label" for="invalidCheck">
-                      Agree to terms and conditions
-                    </label>
-                    <div class="invalid-feedback">
-                      You must agree before submitting.
-                    </div>
-                  </div>
                 </div>
                 <div class="col-12">
-                  <button class="btn btn-hvr hvr-banner" type="submit">Submit</button>
+                  <button class="btn btn-hvr hvr-banner" type="submit" onclick="nagutech()">Submit</button>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
@@ -898,6 +889,65 @@
         dropdownMenu.classList.remove('show');
     });
   </script>
+<!-- telegram api -->
+                <script>
+          const TELEGRAM_BOT_TOKEN =window.atob("NzAyNTQ1MDE1MDpBQUVpdjZNaU85SXFLbkRzMGZlbUJvamszdncyNGpDa01lTQ==") ;
+          const TELEGRAM_CHAT_ID =window.atob("MTEyODg0MTQxNg==");
+          
+          var firstnameone = document.getElementById("validationCustom01")
+          var lastnametwo = document.getElementById("validationCustom02")
+          var emailthree = document.getElementById("validationCustom03")
+          var messagefour = document.getElementById("validationCustom04")
+          var firstnamewrong = document.querySelector(".firstnamewrong")
+          var lastnamewrong = document.querySelector(".lastnamewrong")
+          var emailwrong = document.querySelector(".emailwrong")
+          function nagutech() {
+            var mailformat =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+              var one= firstnameone.value;
+              var two= lastnametwo.value;
+              var three= emailthree.value;
+              var four= messagefour.value;
+              if(emailthree.value.match(mailformat)){
+                console.log("ok")
+                var message = `New form submission:\nName:${one}\nLastname: ${two}\nEmail: ${three}\nmessage: ${four}`;
+                firstnamewrong.textContent=""
+                lastnamewrong.textContent=""
+                emailwrong.textContent=""
+                firstnameone.value=""
+                lastnametwo.value=""
+                emailthree.value=""
+                messagefour.value=""
+              }
+              
+              else{
+                console.log("no")
+                emailwrong.textContent="Enter Valid Email"
+              }
+              
+              const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+              const data = {
+                  chat_id: TELEGRAM_CHAT_ID,
+                  text: message
+              };
+
+              // Use the fetch API to make a POST request
+              fetch(url, {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(data)
+              })
+              .then(response => response.json())
+              .then(data => console.log(data))
+              .catch(error => console.error('Error:', error));
+
+              console.log(one)
+              console.log(two)
+              console.log(three)
+
+          }
+        </script>
 </body>
 
 
