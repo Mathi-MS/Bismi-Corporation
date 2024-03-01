@@ -2103,3 +2103,6 @@ background: linear-gradient(to right, #FA6220 0%, #EF8B33 100%);
 .modal-body{
     font-family:Poppins-semibold;
 }
+.emailwrong{
+    color:red;
+}
