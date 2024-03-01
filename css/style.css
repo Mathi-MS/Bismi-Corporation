@@ -2104,5 +2104,8 @@ background: linear-gradient(to right, #FA6220 0%, #EF8B33 100%);
     font-family:Poppins-semibold;
 }
 .emailwrong{
-    color:red;
+    color:white;
+    opacity:1;
+    padding:10px 0px
+    background:red;
 }
